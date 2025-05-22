@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel = "stylesheet" href = "styles.css"/>
+</head>
+<body>
+    <form action = "insert.php" method="POST">
+        <h1> Email Generator </h1>
+        <label> Firstname : </label>
+        <input  type = "text" name = "firstname" required> <br> <br>
+
+
+
+        <label> Surname : </label>
+        <input type = "text" name = "surname" required> <br> <br>
+
+
+        <label> Programme Code : </label>
+        <input type = "text" name = "programme-code" required> <br> <br>
+
+
+        <label> Reference Number : </label>
+        <input type = "number" name = "reference-number" required> <br> <br>
+
+
+        <label> Domain : </label>
+        <input type = "text" name = "domain"  placeholder = "@st.umat.edu.gh" disabled> <br> <br>
+
+        <button type="submit" name="submit"> Generate Email </button>
+    </form>
+</body>
+</html>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const programmeCodeInput = document.querySelector('input[name="programme-code"]');
+    const referenceNumberInput = document.querySelector('input[name="reference-number"]');
+
+    programmeCodeInput.addEventListener("input", () => {
+        const value = programmeCodeInput.value;
+        if (!/^[A-Za-z]{0,2}$/.test(value)) {
+            alert("Programme code must be letters only and not more than 2 characters.");
+            programmeCodeInput.value = value.slice(0, -1); // remove last character
+        }
+    });
+
+    referenceNumberInput.addEventListener("input", () => {
+        const value = referenceNumberInput.value;
+        if (!/^\d{0,10}$/.test(value)) {
+            alert("Reference number must be digits only and not more than 10 characters.");
+            referenceNumberInput.value = value.replace(/\D/g, '').slice(0, 10); // digits only, limit to 10
+        }
+    });
+});
+</script>
