@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel = "stylesheet" href = "styles.css"/>
 </head>
 <body>
     <form action = "insert.php" method="POST">
@@ -11,19 +12,24 @@
         <label> Firstname : </label>
         <input  type = "text" name = "firstname" required> <br> <br>
 
+
+
         <label> Surname : </label>
         <input type = "text" name = "surname" required> <br> <br>
+
 
         <label> Programme Code : </label>
         <input type = "text" name = "programme-code" required> <br> <br>
 
+
         <label> Reference Number : </label>
         <input type = "number" name = "reference-number" required> <br> <br>
+
 
         <label> Domain : </label>
         <input type = "text" name = "domain"  placeholder = "@st.umat.edu.gh" disabled> <br> <br>
 
-        <button name = "submit"> Generate Email </button>
+        <button type="submit" name="submit"> Generate Email </button>
     </form>
 </body>
 </html>
