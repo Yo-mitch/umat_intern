@@ -39,7 +39,6 @@ NB: the GET method was used in this program just for practicing purposes. -->
             if ($result){
                 //open the view page
                 header("location: view.php");
-                                                                                                                            
             }else{
                 //still be at the index file
                 header("location: index.html");
