@@ -37,7 +37,10 @@
         <input type="text" name="domain" id="domain" value="@st.umat.edu.gh" disabled />
       </div>
 
-      <button type="submit" name="submit">Generate Email</button>
+      <button type="submit" name="submit" id="generateBtn">
+        <span class="btn-text">Generate Email</span>
+        <span class="loader"></span>
+      </button>
     </form>
   </div>
 </body>
@@ -66,4 +69,25 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+  const form = document.querySelector("form");
+  const btn = document.getElementById("generateBtn");
+  const btnText = btn.querySelector(".btn-text");
+  const loader = btn.querySelector(".loader");
+
+  form.addEventListener("submit", (e) => {
+    // Optional: preventDefault for AJAX or simulation
+    // e.preventDefault();
+
+    btn.disabled = true;
+    btnText.style.display = "none";
+    loader.style.display = "inline-block";
+
+    // Simulate loading for 2 seconds (remove if using server)
+    // setTimeout(() => form.submit(), 2000);
+  });
+  
 </script>
+
+
+
