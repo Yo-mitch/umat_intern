@@ -233,3 +233,160 @@ button .loader {
   background-color: #059669;
 }
 
+
+
+
+
+
+
+
+/* Form Validation Styles */
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(-10px); 
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0); 
+    }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+/* Field Error Styles */
+.field-error {
+    color: #e74c3c;
+    font-size: 12px;
+    margin-top: 5px;
+    font-weight: 500;
+    display: block;
+    animation: fadeIn 0.3s ease-in;
+    line-height: 1.4;
+}
+
+/* Form Error Styles */
+.form-error {
+    background-color: #fee;
+    color: #c53030;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #feb2b2;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in;
+}
+
+/* Input Focus States */
+input:focus, 
+select:focus {
+    outline: none;
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    transition: all 0.2s ease-in-out;
+}
+
+/* Error Input States */
+input.error, 
+select.error {
+    border-color: #e74c3c !important;
+    box-shadow: 0 0 0 3px rgba(231, 76, 60, 0.1) !important;
+    animation: shake 0.3s ease-in-out;
+}
+
+/* Success Input States */
+input.success,
+select.success {
+    border-color: #22c55e;
+    box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+}
+
+/* Loading Button States */
+.btn-loading {
+    opacity: 0.7;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+/* Form Group Styling */
+.form-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+
+.form-group.has-error {
+    margin-bottom: 1.5rem;
+}
+
+/* Label Styling */
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #374151;
+    transition: color 0.2s ease-in-out;
+}
+
+.form-group.has-error label {
+    color: #e74c3c;
+}
+
+/* Input and Select Base Styling */
+input, select {
+    transition: all 0.2s ease-in-out;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    padding: 0.5rem;
+    width: 100%;
+    font-size: 14px;
+}
+
+input:hover, 
+select:hover {
+    border-color: #9ca3af;
+}
+
+/* Disabled Input Styling */
+input:disabled {
+    background-color: #f9fafb;
+    color: #6b7280;
+    cursor: not-allowed;
+}
+
+/* Success Message Styling */
+.success-message {
+    background-color: #f0fdf4;
+    color: #166534;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #bbf7d0;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    animation: fadeIn 0.3s ease-in;
+}
+
+/* Loading Spinner Styling */
+.loader {
+    display: none;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
