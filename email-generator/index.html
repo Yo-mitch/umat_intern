@@ -1,51 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title> HeroPage </title>
-    <!-- linking external styles sheet -->
-
-    <link rel = "stylesheet" href = "styles.css"/>
-    <!-- adding an external script file -->
-    <script src="script.js"></script>
-
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Email Generator</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
-    <!-- forms should be submitted to insert.php on post method -->
-    <form action = "insert.php" method="POST">
+  <div class="container">
+    <form action="insert.php" method="POST" class="form-card">
+      <h1>Email Generator</h1>
 
-        <!-- heading -->
-        <h1> Email Generator </h1>
+      <div class="form-group">
+        <label for="firstname">Firstname</label>
+        <input type="text" name="firstname" id="firstname" required />
+      </div>
 
-        <!-- firstname field -->
-        <label> Firstname : </label>
-        <input  type = "text" name = "firstname" required> <br> <br>
+      <div class="form-group">
+        <label for="surname">Surname</label>
+        <input type="text" name="surname" id="surname" required />
+      </div>
 
-        <!-- surname field -->
-        <label> Surname : </label>
-        <input type = "text" name = "surname" required> <br> <br>
+      <div class="form-group">
+        <label for="programme-code">Programme Code</label>
+        <input type="text" name="programme-code" id="programme-code" required />
+      </div>
 
-        <label > Programme :</label> 
-        <select id="programme-code" name = "programme-code" required > 
-            <option value = "" >-- Select a Programme --</option>
-        </select>
+      <div class="form-group">
+        <label for="reference-number">Reference Number</label>
+        <input type="number" name="reference-number" id="reference-number" required />
+      </div>
 
-        <br> <br>
+      <div class="form-group">
+        <label for="domain">Domain</label>
+        <input type="text" name="domain" id="domain" value="@st.umat.edu.gh" disabled />
+      </div>
 
-        <!-- reference number -->
-        <label> Reference Number : </label>
-        <input type = "number" name = "reference-number"  id = "reference-number" required> <br> <br>
-
-        <!-- domain disabled -->
-        <label> Domain : </label>
-        <input type = "text" name = "domain"  placeholder = "@st.umat.edu.gh" disabled> <br> <br>
-
-        <!-- button -->
-        <button type="submit" name="submit"> Generate Email </button>
+      <button type="submit" name="submit" id="generateBtn">
+        <span class="btn-text">Generate Email</span>
+        <span class="loader"></span>
+      </button>
     </form>
+  </div>
 </body>
 </html>
+
+
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const programmeCodeInput = document.querySelector('input[name="programme-code"]');
+    const referenceNumberInput = document.querySelector('input[name="reference-number"]');
+
+    programmeCodeInput.addEventListener("input", () => {
+        const value = programmeCodeInput.value;
+        if (!/^[A-Za-z]{0,2}$/.test(value)) {
+            alert("Programme code must be letters only and not more than 2 characters.");
+            programmeCodeInput.value = value.slice(0, -1); // remove last character
+        }
+    });
+
+    referenceNumberInput.addEventListener("input", () => {
+        const value = referenceNumberInput.value;
+        if (!/^\d{0,10}$/.test(value)) {
+            alert("Reference number must be digits only and not more than 10 characters.");
+            referenceNumberInput.value = value.replace(/\D/g, '').slice(0, 10); // digits only, limit to 10
+        }
+    });
+});
+
+  const form = document.querySelector("form");
+  const btn = document.getElementById("generateBtn");
+  const btnText = btn.querySelector(".btn-text");
+  const loader = btn.querySelector(".loader");
+
+  form.addEventListener("submit", (e) => {
+    // Optional: preventDefault for AJAX or simulation
+    // e.preventDefault();
+
+    btn.disabled = true;
+    btnText.style.display = "none";
+    loader.style.display = "inline-block";
+
+    // Simulate loading for 2 seconds (remove if using server)
+    // setTimeout(() => form.submit(), 2000);
+  });
+  
+</script>
+
+
 

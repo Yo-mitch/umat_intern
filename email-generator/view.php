@@ -60,17 +60,50 @@ if ($row = mysqli_fetch_assoc($result)) {
 <head>
     <meta charset="UTF-8">
     <title>Email Generated</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-    <!-- <h2>Sign-up Successful!</h2> -->
-    <!-- check if row is declared -->
-    <?php if (isset($row)): ?>
-        <h3> Hurray!🚀 </h3>
-        <p> Your Email is : <p><strong><?php echo htmlspecialchars($email); ?></strong></p> </p>
-        <p><a href="resetpassword.php">Click here to reset your password</a></p>
-    <?php else: ?>
-        <p><?php echo $email; ?></p>
-        <!-- a link to set new password -->
-    <?php endif; ?>
+
+<!--     Auto redirect after a delay-->
+<script> 
+  setTimeout(() => {
+    window.location.href = "login.php"; // or "index.html" or wherever home is
+  }, 7000);
+</script>
+
+<body class="success-body">
+    <div class="success-card">
+        <?php if (isset($row)): ?>
+            <h2 class="success-title">🎉 Email Generated Successfully!</h2>
+            <p class="success-msg">Your official email address is:</p>
+            <p class="email-display"><?php echo htmlspecialchars($email); ?></p>
+        
+            <p class="email-display" id="generatedEmail"><?php echo htmlspecialchars($email); ?></p>
+            <button class="copy-btn" data-clipboard-target="#generatedEmail">Copy Email</button>
+
+            <a class="reset-link" href="resetpassword.php">Reset your password</a>
+        <?php else: ?>
+            <p class="error-msg"><?php echo $email; ?></p>
+        <?php endif; ?>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+    <script>
+      const clipboard = new ClipboardJS('.copy-btn');
+    
+      clipboard.on('success', function(e) {
+        e.trigger.textContent = 'Copied!';
+        setTimeout(() => {
+          e.trigger.textContent = 'Copy Email';
+        }, 2000);
+        e.clearSelection();
+      });
+    
+      clipboard.on('error', function(e) {
+        alert('Copy failed. Please copy manually.');
+      });
+    </script>
+
 </body>
 </html>
+
