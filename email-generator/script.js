@@ -32,11 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
         "BSc Petroleum Refining and Petrochemical Engineering (RP)",
         "BSc Petroleum Geosciences and Engineering (PG)",
         "BSc Statistical Data Science (SD)",
-        "BSc Solar Photovoltaic and Solar Thermal Systems",
-        "BSc Land Administration and Information System",
-        "BSc Spatial Planning",
-        "BSc Bioenergy",
-        "Game Development"
+        "BSc Land Administration" ,
+        "BSc Spatial Planning"
     ];
 
     // Initialize form
